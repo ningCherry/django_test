@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>省市区选择</title>
+
+    <script type="text/javascript" src="static/booktest/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            //查询省的信息
+            pro=$('#pro')
+            $.get('area/0',function(dic){       //dic格式为{data:[[],[],[],]}
+                $.each(dic.data,function(index,item){      //item格式为[id,title]
+                    pro.append('<option value="'+'item[0]'+'">'+item[1]+'</option>')  //节点操作，添加元素
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+    <select id="pro">
+        <option value="">请选择省</option>
+    </select>
+    <select id="city">
+        <option value="">请选择市</option>
+    </select>
+    <select id="dis">
+        <option value="">请选择区</option>
+    </select>
+</body>
+</html>

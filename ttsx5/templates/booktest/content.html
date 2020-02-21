@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>content</title>
+
+    <script type="text/javascript" src='/static/tiny_mce/tiny_mce.js'></script>  <!--这里引入的是自动找的django-tinymce包里的文件-->
+    <script type="text/javascript">   <!--重新定义textarea标签，将textarea标签改为富文本格式-->
+        tinyMCE.init({
+            'mode':'textareas',
+            'theme':'advanced',
+            'width':400,
+            'height':100
+        });
+    </script>
+</head>
+<body>
+    <form action="/content_handle/" method="post">
+        {% csrf_token %}
+        <h4>请输入文本</h4>
+        <textarea name="hcontent" id="" cols="30" rows="10"></textarea>
+        <br>
+        <input type="submit" value="提交">
+    </form>
+</body>
+</html>

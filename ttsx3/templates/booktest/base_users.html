@@ -1,0 +1,13 @@
+{% extends 'booktest/base.html' %}    <!--继承booktest/base.html父模板-->
+
+{% block content1 %}      <!--在子模板中使用block填充预留区域-->
+    <table border="1">
+        <tr>
+            <td height="300">用户导航</td>
+            <td>
+                {% block users %}{% endblock users %}
+                {{name}}
+            </td>
+        </tr>
+    </table>
+{% endblock content1 %}

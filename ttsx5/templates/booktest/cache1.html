@@ -1,0 +1,15 @@
+{% load cache %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>cache1</title>
+</head>
+<body>
+    {% cache 600 hello %}   <!--模板片断缓存-->
+        <!--hello1-->
+        hello2
+    {% endcache %}
+</body>
+</html>

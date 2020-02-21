@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>转义</title>
+</head>
+<body>
+    {{t1}}  <!--从views过来，自动转义-->
+    <hr>
+    {{t1|safe}}   <!--变量关闭转义-->
+    <hr>
+    {% autoescape off %}    <!--代码块关闭转义-->
+        {{t1}}
+    {% endautoescape %}
+    <hr>
+    字面值：<br>
+    {{t2|default:'<h1>123</h1>'}}    <!--自动转义标签在该模板中关闭，t2没有值时，默认值为'<h1>123</h1>'-->
+    <hr>
+    手动转义：<br>
+    {{t2|default:'&lt;h1&gt;123&lt;/h1&gt;'}}
+</body>
+</html>

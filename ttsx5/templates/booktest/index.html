@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+    <script src="/static/booktest/jquery-1.12.4.min.js"></script>
+    <script>
+        $(function(){
+            //使用ajax加载省信息
+            pro=$('#pro')
+            $.get('/pro/',function(dic){       //dic格式为{data:[[],[],[],]}
+                $.each(dic.data,function(index,item){      //item格式为[id,title]
+                    pro.append('<option value="'+item[0]+'">'+item[1]+'</option>')     //节点操作，添加元素
+                })
+            });
+
+            //获取市的信息
+            $('#pro').change(function(){
+                //alert($(this).val())    //弹出省对应的value值
+                $.get('/city'+$(this).val()+'/',function(dic){   //dic格式为{data:[{},{}...]}
+                    city=$('#city')
+                    city.empty().append('<option value="">请选择市</option>')     //empty()把所有段落的子元素（包括文本节点）删除
+                    $('#dis').empty().append('<option value="">请选择区</option>')
+                    $.each(dic.data,function(index,item){
+                        city.append('<option value="'+item.id+'">'+item.title+'</option>')
+                    })
+                })
+            });
+
+            //获取区的信息
+            $('#city').change(function(){
+                $.get('/city'+$(this).val()+'/',function(dic){
+                    dis=$('#dis')
+                    dis.empty().append('<option value="">请选择区</option>')
+                    $.each(dic.data,function(index,item){
+                        dis.append('<option value="'+item.id+'">'+item.title+'</option>')
+                    })
+                })
+            })
+        })
+    </script>
+
+</head>
+<body>
+    <select id="pro">
+        <option value="">请选择省</option>
+    </select>
+    <select id="city">
+        <option value="">请选择市</option>
+    </select>
+    <select id="dis">
+        <option value="">请选择区</option>
+    </select>
+</body>
+</html>

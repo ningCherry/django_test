@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>base</title>
+</head>
+<body>
+
+    <h1>cherry!欢迎您</h1>
+    <hr>
+
+    {% block content1 %}     <!--在父模板中预留区域，在子模板中填充-->
+        <h2>嗨起来</h2>      <!--定义默认值-->
+    {% endblock content1 %}
+    <hr>
+
+    <h1>玩的开心，拜拜！</h1>
+    <hr>
+
+</body>
+</html>

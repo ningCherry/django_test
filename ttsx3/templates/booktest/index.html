@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>   <!--{% comment %}多行注释{% endcomment %}   |   {{forloop.counter}}表示当前是第几次循环   |  divisibleby:2 求余-->
+<body>
+    {# {{herolist.hname }} #}     {#单行注释#}
+
+    {% comment %}
+    {{herolist.showname}}
+    {% endcomment %}
+
+    <a href="{% url 'booktest:show' '123' '345' %}">显示</a><br><br>   <!--反向解析：{% url 'namespace值:name值' '参数值' %} -->
+
+    奇数行显示蓝色，偶数行显示红色<br><br>
+    {% for hero in herolist %}
+        {% if forloop.counter|divisibleby:"2" %}
+            <li style="color:red">{{forloop.counter}}:{{hero.hname}}</li>
+        {% else %}
+            <li style="color:blue">{{forloop.counter}}:{{hero.hname}}</li>
+        {% endif %}
+    {% empty %}
+        啥也没找到
+    {% endfor %}
+</body>
+</html>
